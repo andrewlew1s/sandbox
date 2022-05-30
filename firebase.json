@@ -1,0 +1,8 @@
+{
+  "hosting": [
+    {
+      "target": "reality-augmented",
+      "public": "augmented-reality/public"
+    }
+  ]
+}
