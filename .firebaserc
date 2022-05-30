@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "andrewlewis-sandbox"
+  },
+  "targets": {
+    "andrewlewis-sandbox": {
+      "hosting": {
+        "reality-augmented": [
+          "reality-augmented"
+        ]
+      }
+    }
   }
 }
