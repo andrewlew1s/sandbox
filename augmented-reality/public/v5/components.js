@@ -1,6 +1,4 @@
-
-// This component hides and shows certain elements as the camera moves
-AFRAME.registerComponent('portal', {
+const imageTargetPortalComponent = () => ({
   schema: {
     name: {type: 'string'},
   },
@@ -8,10 +6,12 @@ AFRAME.registerComponent('portal', {
     const {object3D} = this.el
     const {name} = this.data
     object3D.visible = false
+
     // selects the portal
     const portal = this.el.sceneEl.querySelector('#portal')
-    // selects the turtle
-    const turtle = this.el.sceneEl.querySelector('#turtle')
+    // selects the ball
+    const ball = this.el.sceneEl.querySelector('#ball')
+
     const showImage = ({detail}) => {
       if (name !== detail.name) {
         return
@@ -21,8 +21,10 @@ AFRAME.registerComponent('portal', {
       object3D.scale.set(detail.scale, detail.scale, detail.scale)
       object3D.visible = true
     }
+
     const imageFound = (e) => {
       showImage(e)
+
       // portal animation
       setTimeout(() => {
         portal.setAttribute('animation__scaleIn', {
@@ -33,9 +35,10 @@ AFRAME.registerComponent('portal', {
           easing: 'easeOutElastic',
         })
       }, 200)
-      // turtle animation
+
+      // ball animation
       setTimeout(() => {
-        turtle.setAttribute('animation__moveOut', {
+        ball.setAttribute('animation__moveOut', {
           property: 'position',
           dur: 3000,
           from: '0 0 -10',
@@ -44,11 +47,15 @@ AFRAME.registerComponent('portal', {
         })
       }, 1000)
     }
+
     const imageLost = (e) => {
       object3D.visible = false
     }
+
     this.el.sceneEl.addEventListener('xrimagefound', imageFound)
     this.el.sceneEl.addEventListener('xrimageupdated', showImage)
     this.el.sceneEl.addEventListener('xrimagelost', imageLost)
-  }
+  },
 })
+
+export {imageTargetPortalComponent}
