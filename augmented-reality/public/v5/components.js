@@ -58,4 +58,4 @@ const imageTargetPortalComponent = () => ({
   },
 })
 
-export {imageTargetPortalComponent}
+AFRAME.registerComponent('image-target-portal', imageTargetPortalComponent())
