@@ -4,4 +4,4 @@
 // is loaded, and before body.html is loaded.
 
 import {floatingTurtleSpawnComponent} from './components'
-AFRAME.registerComponent('pumpkin-spawn', floatingTurtleSpawnComponent)
+AFRAME.registerComponent('floating-turtle-spawn', floatingTurtleSpawnComponent)
