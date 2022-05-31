@@ -5,3 +5,4 @@
 
 import {floatingTurtleSpawnComponent} from './components'
 AFRAME.registerComponent('floating-turtle-spawn', floatingTurtleSpawnComponent)
+console.log('ran app.js');
