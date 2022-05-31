@@ -50,4 +50,7 @@ const imageTargetPortalComponent = () => ({
     this.el.sceneEl.addEventListener('xrimagelost', imageLost)
   },
 })
+
+AFRAME.registerComponent('image-target-portal', imageTargetPortalComponent())
+
 export {imageTargetPortalComponent}
