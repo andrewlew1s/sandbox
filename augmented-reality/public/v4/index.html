@@ -20,6 +20,10 @@
     <script async src="//apps.8thwall.com/xrweb?appKey=zl9iYLs0UnM13G8kugSsXRboJtbC2OJOZWmGeV4dvmWAKMaq1kwdRIa4PTdy4WvWyR05BG"></script>
 
   </head>
+  <script>
+    import {floatingTurtleSpawnComponent} from './components'
+    AFRAME.registerComponent('floating-turtle-spawn', floatingTurtleSpawnComponent)
+  </script>
   <body>
       <!-- body.html is optional; elements will be added to your html body after app.js is loaded. -->
       <a-scene
