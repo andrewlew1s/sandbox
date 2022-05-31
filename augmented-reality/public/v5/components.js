@@ -1,4 +1,6 @@
-const imageTargetPortalComponent = () => ({
+
+// This component hides and shows certain elements as the camera moves
+AFRAME.registerComponent('portal', {
   schema: {
     name: {type: 'string'},
   },
@@ -48,9 +50,5 @@ const imageTargetPortalComponent = () => ({
     this.el.sceneEl.addEventListener('xrimagefound', imageFound)
     this.el.sceneEl.addEventListener('xrimageupdated', showImage)
     this.el.sceneEl.addEventListener('xrimagelost', imageLost)
-  },
+  }
 })
-
-AFRAME.registerComponent('image-target-portal', imageTargetPortalComponent())
-
-export {imageTargetPortalComponent}

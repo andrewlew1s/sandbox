@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Copyright (c) 2022 8th Wall, Inc. -->
-    <!-- head.html is optional; elements will be added to your html head before app.js is loaded. -->
-    <!-- Use "8thwall:" meta tags to hook into 8th Wall's build process and developer tools. -->
+    <meta charset="utf-8">
+    <title>8th Wall Web: Portal</title>
     <meta name="8thwall:renderer" content="aframe:1.1.0">
     <meta name="8thwall:package" content="@8thwall.xrextras">
     <meta name="8thwall:package" content="@8thwall.landing-page">
-
     <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
     <script src="//cdn.8thwall.com/web/aframe/8frame-1.1.0.min.js"></script>
-    <script src="//cdn.8thwall.com/web/aframe/aframe-physics-system-4.0.1.min.js"></script>
 
     <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
          See github.com/8thwall/web/tree/master/xrextras -->
@@ -35,7 +32,7 @@
     
     <a-camera></a-camera>
     
-    <a-entity image-target-portal="name=black-clover3" visible="false">
+    <a-entity image-target-portal="name: black-clover3" visible="false">
       
       <a-ring
         id="portal"
@@ -62,11 +59,7 @@
         scale="0.015 0.015 -0.015"
         src="#space"
       ></a-sky>
-      
     </a-entity>
-    
-    
   </a-scene>
-
   </body>
 </html>
