@@ -2,12 +2,13 @@
 
 _Self hosted version of https://github.com/8thwall/web/tree/master/examples/aframe/tossobject_
 
-Tap the screen to toss tomatoes. When they hit the ground, they splat and make a sound.
+
+
+Tap the screen to launch a space shuttle. Unfortunately, when it hits the ground, it splats and makes a sound.
 Shows physics, collision events and sound fx.
 
-![toss-screenshot](../../../images/screenshot-toss.jpg)
-
-[Try the live demo here](https://8thwall.8thwall.app/tossobject-aframe)
+### Changes
+Replaces tomato with a space shuttle
 
 ### Attribution
 
