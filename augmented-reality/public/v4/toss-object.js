@@ -2,7 +2,7 @@
 /* globals AFRAME */
 
 const OBJECT_SIZE = 0.1
-const THROW_SPEED = 100
+const THROW_SPEED = Math.floor(Math.random() * 100) + 1
 
 AFRAME.registerComponent('shoot-shuttle', {
 	init() {
@@ -85,8 +85,8 @@ AFRAME.registerComponent('shoot-shuttle', {
 		  // Using animation component to show flattening
 		  laserBase.setAttribute('animation__scale', {
 			property: 'scale',
-			from: '1 1 1',
-			to: '3 0.1 3',
+			from: shuttle.object3D.scale,
+			to: '0.8 0.1 0.8',
 			dur: 500,
 			easing: 'easeOutQuad',
 		  })
@@ -95,7 +95,7 @@ AFRAME.registerComponent('shoot-shuttle', {
 		  setTimeout(() => {
 			laserBase.setAttribute('animation__scale', {
 			  property: 'scale',
-			  from: '3 0.1 3',
+			  from: shuttle.object3D.scale,
 			  to: '0.001 0.001 0.001',
 			  dur: 1500,
 			  easing: 'easeInQuad',

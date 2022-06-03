@@ -20,10 +20,6 @@
     <script async src="//apps.8thwall.com/xrweb?appKey=zl9iYLs0UnM13G8kugSsXRboJtbC2OJOZWmGeV4dvmWAKMaq1kwdRIa4PTdy4WvWyR05BG"></script>
 
   </head>
-  <script>
-    import {floatingTurtleSpawnComponent} from './components'
-    AFRAME.registerComponent('floating-turtle-spawn', floatingTurtleSpawnComponent)
-  </script>
   <body>
       <!-- body.html is optional; elements will be added to your html body after app.js is loaded. -->
       <a-scene
@@ -34,12 +30,11 @@
       xrweb>
 
       <a-assets>
-        <img id="logo" src="./assets/media/A.jpg">
+        <img id="logo" src="assets/media/A.jpg">
       </a-assets>
       <a-camera position="0 1.5 0"></a-camera>
       <a-light type="ambient" intensity="0.25"></a-light>
       <xrextras-named-image-target id="bottle" name="A-1">
-        <xrextras-curved-target-container floating-turtle-spawn ></xrextras-curved-target-container>
         <xrextras-target-mesh material="src: #logo; transparent: false;"></xrextras-target-mesh>
         <a-sphere scale="0.25 0.25 0.25" material="shader: flat; color: #FFE000;"></a-sphere>
       </xrextras-named-image-target>
