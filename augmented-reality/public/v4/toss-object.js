@@ -7,7 +7,7 @@ const THROW_SPEED = 100
 AFRAME.registerComponent('shoot-shuttle', {
 	init() {
 	  const camera = document.getElementById('camera')
-	  const splatSnd = document.querySelector('#splat').components.sound
+	  const laserSnd = document.querySelector('#laser').components.sound
 
 	  this.el.sceneEl.addEventListener('touchstart', (event) => {
 		console.log(`Throwing object sized ${OBJECT_SIZE} with speed ${THROW_SPEED}`)
@@ -42,38 +42,38 @@ AFRAME.registerComponent('shoot-shuttle', {
 		// Add shuttle to scene
 		this.el.sceneEl.appendChild(shuttle)
 
-		// The splat is created at the same time as the thrown shuttle so
+		// The laser is created at the same time as the thrown shuttle so
 		// there is time to load the model before it hits the ground
-		const splatBase = document.createElement('a-entity')
+		const laserBase = document.createElement('a-entity')
 		splatBase.setAttribute('visible', 'false')
 
 		// The splat consists of a model wrapped in an empty
 		// parent so we can apply the correct scaling animation
-		const splat = document.createElement('a-entity')
-		splat.setAttribute('gltf-model', '#shuttleModel')
-		splat.setAttribute('scale', '1 1 1')
-		splatBase.appendChild(splat)
+		const laser = document.createElement('a-entity')
+		laser.setAttribute('gltf-model', '#shuttleModel')
+		laser.setAttribute('scale', '1 1 1')
+		laserBase.appendChild(laser)
 
-		this.el.sceneEl.appendChild(splatBase)
+		this.el.sceneEl.appendChild(laserBase)
 
 		let didCollide = false
 		shuttle.addEventListener('collide', (e) => {
-		  // Only want to do the splat once, and with the ground only
+		  // Only want to do the laser once, and with the ground only
 		  if (didCollide || e.detail.body.el.id !== 'ground') {
 			return
 		  }
 		  didCollide = true
 
-		  // Stop previous splat sound
-		  splatSnd.stopSound()
-		  // Play splat sound
-		  splatSnd.playSound()
+		  // Stop previous laser sound
+		  laserSnd.stopSound()
+		  // Play laser sound
+		  laserSnd.playSound()
 
-		  // Copy positioning of thrown shuttle to splat
-		  splatBase.object3D.position.copy(shuttle.object3D.position)
-		  splat.object3D.rotation.copy(shuttle.object3D.rotation)
+		  // Copy positioning of thrown shuttle to laser
+		  laserBase.object3D.position.copy(shuttle.object3D.position)
+		  laser.object3D.rotation.copy(shuttle.object3D.rotation)
 
-		  splatBase.object3D.visible = true
+		  laserBase.object3D.visible = true
 
 		  shuttle.setAttribute('visible', 'false')
 
@@ -83,7 +83,7 @@ AFRAME.registerComponent('shoot-shuttle', {
 		  }, 0)
 
 		  // Using animation component to show flattening
-		  splatBase.setAttribute('animation__scale', {
+		  laserBase.setAttribute('animation__scale', {
 			property: 'scale',
 			from: '1 1 1',
 			to: '3 0.1 3',
@@ -91,16 +91,16 @@ AFRAME.registerComponent('shoot-shuttle', {
 			easing: 'easeOutQuad',
 		  })
 
-		  // After 2.5 seconds, shrink the splat away and delete it
+		  // After 2.5 seconds, shrink the laser away and delete it
 		  setTimeout(() => {
-			splatBase.setAttribute('animation__scale', {
+			laserBase.setAttribute('animation__scale', {
 			  property: 'scale',
 			  from: '3 0.1 3',
 			  to: '0.001 0.001 0.001',
 			  dur: 1500,
 			  easing: 'easeInQuad',
 			})
-			setTimeout(() => splatBase.parentNode.removeChild(splatBase), 1500)
+			setTimeout(() => laserBase.parentNode.removeChild(laserBase), 1500)
 		  }, 2500)
 		})
 	  })

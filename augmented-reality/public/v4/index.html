@@ -18,7 +18,7 @@
       src="//apps.8thwall.com/xrweb?appKey=zl9iYLs0UnM13G8kugSsXRboJtbC2OJOZWmGeV4dvmWAKMaq1kwdRIa4PTdy4WvWyR05BG"
     ></script>
 
-    <script src="v3/toss-object.js"></script>
+    <script src="v4/toss-object.js"></script>
   </head>
   <body>
     <!-- We must add the shoot-shuttle component to the scene so it has an effect, as well as the physics component -->
@@ -33,18 +33,18 @@
     >
       <!-- We can define assets here to be loaded when A-Frame initializes -->
       <a-assets>
-        <a-asset-item id="shuttleModel" src="v3/shuttle.glb"></a-asset-item>
+        <a-asset-item id="shuttleModel" src="v4/shuttle.glb"></a-asset-item>
         <a-asset-item
           preload="auto"
           class="a-sound"
-          id="splatSrc"
-          src="v3/splat.m4a"
+          id="laserSrc"
+          src="v4/laser.m4a"
           response-type="arraybuffer"
         ></a-asset-item>
       </a-assets>
 
       <a-camera id="camera" position="0 4 4">
-        <a-sound id="splat" src="#splatSrc"></a-sound>
+        <a-sound id="laser" src="#laserSrc"></a-sound>
       </a-camera>
 
       <a-entity
