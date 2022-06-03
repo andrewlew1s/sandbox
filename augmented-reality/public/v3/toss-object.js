@@ -2,7 +2,7 @@
 /* globals AFRAME */
 
 const OBJECT_SIZE = 0.1
-const THROW_SPEED = 100
+const THROW_SPEED = 30
 
 AFRAME.registerComponent('shoot-shuttle', {
 	init() {
@@ -14,17 +14,18 @@ AFRAME.registerComponent('shoot-shuttle', {
 
 		// Create element to be thrown, setting position, scale, and model
 		const shuttle = document.createElement('a-entity')
-		shuttle.setAttribute('position', camera.object3D.position)
+		shuttle.setAttribute('position', `0 1 0`)
+		console.log(' camera.object3D.position: ',  JSON.stringify(camera.object3D.position));
 		shuttle.setAttribute('scale', `${OBJECT_SIZE} ${OBJECT_SIZE} ${OBJECT_SIZE}`)
 		shuttle.setAttribute('gltf-model', '#shuttleModel')
 
 		// Choose a random rotation offset for some variation
 		// const randomRotation = {x: -90 + Math.random() * 30, y: Math.random() * 360, z: 0}
 		// shuttle.setAttribute('rotation', randomRotation)
-		shuttle.setAttribute('rotation', '0 0 0')
+		shuttle.setAttribute('rotation', '0 0 90')
 
 		// Set velocity, rotated with camera direction
-		const velocity = new THREE.Vector3(0, 0, -THROW_SPEED)
+		const velocity = new THREE.Vector3(0, THROW_SPEED, 0)
 		velocity.applyQuaternion(camera.object3D.quaternion)
 		shuttle.setAttribute('velocity', velocity)
 
@@ -63,7 +64,6 @@ AFRAME.registerComponent('shoot-shuttle', {
 			return
 		  }
 		  didCollide = true
-
 		  // Stop previous splat sound
 		  splatSnd.stopSound()
 		  // Play splat sound
@@ -85,8 +85,8 @@ AFRAME.registerComponent('shoot-shuttle', {
 		  // Using animation component to show flattening
 		  splatBase.setAttribute('animation__scale', {
 			property: 'scale',
-			from: '1 1 1',
-			to: '3 0.1 3',
+			from: shuttle.object3D.scale,
+			to: '0.8 0.1 0.8',
 			dur: 500,
 			easing: 'easeOutQuad',
 		  })
@@ -95,7 +95,7 @@ AFRAME.registerComponent('shoot-shuttle', {
 		  setTimeout(() => {
 			splatBase.setAttribute('animation__scale', {
 			  property: 'scale',
-			  from: '3 0.1 3',
+			  from: shuttle.object3D.scale,
 			  to: '0.001 0.001 0.001',
 			  dur: 1500,
 			  easing: 'easeInQuad',
