@@ -106,7 +106,7 @@ const tapPlaceComponent = {
           property: 'scale',
           to: `${randomScale} ${randomScale} ${randomScale}`,
           easing: 'easeOutElastic',
-          dur: 700,
+          dur: 600,
         })
       })
     })
