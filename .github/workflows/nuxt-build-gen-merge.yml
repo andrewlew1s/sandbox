@@ -6,14 +6,7 @@ name: Build and generate nuxt project on merge or pull request
 on:
   push:
     branches:
-      - '**' 
-    paths:
-      - "augmented-reality/public/v8/**"
-
-on:
-  pull_request:
-    branches:
-      - '**' 
+      - 'master' 
     paths:
       - "augmented-reality/public/v8/**"
 
