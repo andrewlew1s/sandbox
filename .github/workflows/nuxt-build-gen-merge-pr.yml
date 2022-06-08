@@ -23,6 +23,6 @@ jobs:
     working-directory: ./augmented-reality/public/v8/
     steps:
      - name: Build for production
-        run: npm run build
+        - run: npm run build
      - name: Generate static project
-        run: npm run generate
+        - run: npm run generate
