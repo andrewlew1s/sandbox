@@ -33,12 +33,12 @@ jobs:
         npm ci
 
     - name: Build for production
-       run: |
+      run: |
         cd augmented-reality/public/v8
         npm run build
 
     - name: Generate static project
-       run: |
+      run: |
         cd augmented-reality/public/v8
         npm run generate
 
