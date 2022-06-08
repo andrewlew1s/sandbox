@@ -1,0 +1,28 @@
+# This file was made by Andrew
+# Requires deletion of previous dist folder if it exists before running
+
+name: Build and generate nuxt project on merge or pull request
+
+on:
+  push:
+    branches:
+      - '**' 
+    paths:
+      - "augmented-reality/public/v8/**"
+
+on:
+  pull_request:
+    branches:
+      - '**' 
+    paths:
+      - "augmented-reality/public/v8/**"
+
+jobs:
+  build_and_generate:
+    runs-on: ubuntu-latest
+    working-directory: ./augmented-reality/public/v8/
+    steps:
+     - name: Build for production
+        run: npm run build
+     - name: Generate static project
+        run: npm run generate
