@@ -28,16 +28,19 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Install
-      working-directory: ./augmented-reality/public/v8/
-      run: npm ci
+      run: |
+        cd augmented-reality/public/v8
+        npm ci
 
     - name: Build for production
-      working-directory: ./augmented-reality/public/v8/
-      run: npm run build
+       run: |
+        cd augmented-reality/public/v8
+        npm run build
 
     - name: Generate static project
-      working-directory: ./augmented-reality/public/v8/
-      run: npm run generate
+       run: |
+        cd augmented-reality/public/v8
+        npm run generate
 
     - name: Commit changes
       run: |
