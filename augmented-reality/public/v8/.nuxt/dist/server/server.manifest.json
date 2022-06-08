@@ -1,0 +1,13 @@
+{
+  "entry": "server.js",
+  "files": {
+    "components/tap-to-place.js": "components/tap-to-place.js",
+    "pages/index.js": "pages/index.js",
+    "server.js": "server.js"
+  },
+  "maps": {
+    "components/tap-to-place.js": "components/tap-to-place.js.map",
+    "pages/index.js": "pages/index.js.map",
+    "server.js": "server.js.map"
+  }
+}
