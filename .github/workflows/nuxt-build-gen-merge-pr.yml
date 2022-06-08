@@ -20,6 +20,7 @@ on:
 jobs:
   build_and_generate:
     runs-on: ubuntu-latest
+    working-directory: ./augmented-reality/public/v8/
 
     strategy:
       matrix:
@@ -33,9 +34,6 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    working-directory: ./augmented-reality/public/v8/
-
-    steps:
     - name: Build for production
       - run: npm run build
     - name: Generate static project
