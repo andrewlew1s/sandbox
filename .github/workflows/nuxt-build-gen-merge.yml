@@ -18,7 +18,6 @@ jobs:
     strategy:
       matrix:
         node-version: [10.x]
-        directory-path: ./augmented-reality/public/v8/
 
     steps:
     - uses: actions/checkout@v2
@@ -29,8 +28,8 @@ jobs:
         node-version: ${{ matrix.node-version }}
 
     - name: Build for production
-      working-directory: ${{ matrix.directory-path }}
+      working-directory: ./augmented-reality/public/v8/
       run: npm run build
     - name: Generate static project
-      working-directory: ${{ matrix.directory-path }}
+      working-directory: ./augmented-reality/public/v8/
       run: npm run generate
