@@ -8,6 +8,8 @@
     <meta name="8thwall:package" content="@8thwall.landing-page">
     <!-- We've included a slightly modified version of A-Frame, which fixes some polish concerns -->
     <script src="//cdn.8thwall.com/web/aframe/8frame-1.1.0.min.js"></script>
+    <!-- Add extras from aframe for animations -->
+    <script src="//cdn.8thwall.com/web/aframe/aframe-extras-6.1.1.min.js"></script>
 
     <!-- XR Extras - provides utilities like load screen, almost there, and error handling.
          See github.com/8thwall/web/tree/master/xrextras -->
@@ -31,8 +33,7 @@
       <!-- We can define assets here to be loaded when A-Frame initializes -->
       <a-assets>
         <!-- Credit to Poly by Google for the model: https://poly.google.com/view/5ZMAz7_ucTn -->
-        <a-asset-item id="whale-obj" src="/v10/whale.obj"></a-asset-item>
-        <a-asset-item id="whale-mtl" src="/v10/whale.mtl"></a-asset-item>
+        <a-asset-item id="birdModel" src="/v10/scene.gltf"></a-asset-item>
       </a-assets>
 
       <!-- The raycaster will emit mouse events on scene objects specified with the cantap class -->
@@ -60,12 +61,13 @@
 
       <a-entity
         id="model"
-        obj-model="obj: #whale-obj; mtl: #whale-mtl"
+        gltf-model="#birdModel"
+        animation-mixer
         class="cantap"
         xrextras-hold-drag
         xrextras-two-finger-rotate
         xrextras-pinch-scale
-        scale="0.5 0.5 0.5"
+        scale="0.01 0.01 0.01"
         shadow="receive: false">
       </a-entity>
 
